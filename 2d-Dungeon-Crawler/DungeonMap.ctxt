@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=DungeonMap
+comment1.params=
+comment1.target=int[][]\ readMap()
+comment2.params=x\ y
+comment2.target=void\ checkPos(int,\ int)
+comment3.params=
+comment3.target=void\ main()
+numComments=4
