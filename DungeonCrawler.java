@@ -1,5 +1,13 @@
 import java.util.Scanner;
 public class DungeonCrawler{
+    boolean sword, torch, rope, key; 
+    //might need more items later
+    //obstacles: monster to attack, door, pitfall, monster that is scared of fire
+    //obstacles are set in the map
+    int x, y; //global 
+
+    //make a method that keeps track of x and y, and possibly work on movement
+    
     public static void main(String[] args){
         DungeonMap map = new DungeonMap();
         map.readMap();

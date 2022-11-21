@@ -3,9 +3,10 @@ import java.util.Scanner;
 public class DungeonMap{
     static int[][] map;
     static int width,height;
+    boolean North, South, East, West; //put these as local variable
     public static int[][] readMap(){
-        //File mapFile = new File("./maps/dungeon.txt");
-        File mapFile = new File("./maps/dungeon2.txt");
+        File mapFile = new File("./maps/dungeon.txt");
+        //File mapFile = new File("./maps/dungeon2.txt");
         //File mapFile = new File("./maps/dungeon3.txt");
         Scanner mapInput;
         try{
@@ -41,6 +42,7 @@ public class DungeonMap{
     }
     
     public static void checkPos(int x, int y){
+        boolean North, South, East, West = false; 
         if (map[y][x-1] == 1){
             System.out.println("There is a passage to the WEST");
         }
