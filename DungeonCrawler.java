@@ -1,10 +1,10 @@
 import java.util.Scanner;
 public class DungeonCrawler{
-    boolean sword, torch, rope, key; 
+    private boolean sword, torch, rope, key = false; 
     //might need more items later
     //obstacles: monster to attack, door, pitfall, monster that is scared of fire
     //obstacles are set in the map
-    int x, y; //global 
+    private int x, y; //global 
 
     //make a method that keeps track of x and y, and possibly work on movement
     
@@ -26,8 +26,32 @@ public class DungeonCrawler{
                 break;
             } else {
                 map.checkPos(x,y);
+                map.pitfallTrapPos(x,y);
+                map.swordPos(x,y);
             }
         }
         input.close();
+    } 
+    
+    public void DungeonObstacles(){
+        String monster; 
+        String scaredOfFireMon; 
+        
+        if(sword)
+        {
+            System.out.print("You picked up a sword");
+        }
+        
+    }
+    
+    public boolean getSword()
+    {
+        return sword;
+    }
+    
+    public void setSword(boolean sword)
+    {
+        sword = true;
+        this.sword = sword; 
     }
 }
