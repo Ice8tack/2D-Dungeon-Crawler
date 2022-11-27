@@ -1,33 +1,45 @@
-
-/**
- * Write a description of class Player here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Player
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private int x,y,north,south,east,west;
+    private boolean sword, torch, rope, key = false;
 
-    /**
-     * Constructor for objects of class Player
-     */
-    public Player()
-    {
-        // initialise instance variables
-        x = 0;
+    public void checkPosition(DungeonMap map){
+        north = map.checkNorth(this);
+        south = map.checkSouth(this);
+        east = map.checkEast(this);
+        west = map.checkWest(this);
+
+        map.printDirection(north,"North");
+        map.printDirection(south,"South");
+        map.printDirection(east,"East");
+        map.printDirection(west,"West");
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
+    }
+
+    public boolean hasSword()
     {
-        // put your code here
-        return x + y;
+        return sword;
+    }
+
+    public void getSword()
+    {
+        this.sword = true; 
+    }
+
+    public boolean hasTorch()
+    {
+        return sword;
+    }
+
+    public void getTorch()
+    {
+        this.torch = true; 
     }
 }

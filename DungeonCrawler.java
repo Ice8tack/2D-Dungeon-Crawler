@@ -1,6 +1,5 @@
 import java.util.Scanner;
 public class DungeonCrawler{
-    private boolean sword, torch, rope, key = false; 
     //might need more items later
     //obstacles: monster to attack, door, pitfall, monster that is scared of fire
     //obstacles are set in the map
@@ -15,6 +14,16 @@ public class DungeonCrawler{
         checkPosLoop(map);
     }
     
+    public static void checkRoom(DungeonMap map,Player user){
+        switch (map.checkCurrent(user)){
+            case 2:
+                System.out.println("You investigate the glimmer..");
+                System.out.println("...");
+                System.out.println("A sword! You pick it up.");
+                user.getSword();
+        }
+    }
+    
     public static void checkPosLoop(DungeonMap map){
         Scanner input = new Scanner(System.in);
         while (true){
@@ -26,8 +35,6 @@ public class DungeonCrawler{
                 break;
             } else {
                 map.checkPos(x,y);
-                map.pitfallTrapPos(x,y);
-                map.swordPos(x,y);
             }
         }
         input.close();
@@ -37,21 +44,12 @@ public class DungeonCrawler{
         String monster; 
         String scaredOfFireMon; 
         
-        if(sword)
+        /*if(sword)
         {
             System.out.print("You picked up a sword");
-        }
+        }*/
         
     }
     
-    public boolean getSword()
-    {
-        return sword;
-    }
     
-    public void setSword(boolean sword)
-    {
-        sword = true;
-        this.sword = sword; 
-    }
 }
