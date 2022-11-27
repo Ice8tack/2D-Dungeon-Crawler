@@ -1,18 +1,18 @@
 #BlueJ package file
-dependency1.from=DungeonMap
-dependency1.to=Player
+dependency1.from=Player
+dependency1.to=DungeonMap
 dependency1.type=UsesDependency
-dependency2.from=DungeonCrawler
-dependency2.to=DungeonMap
+dependency2.from=DungeonMap
+dependency2.to=Player
 dependency2.type=UsesDependency
 dependency3.from=DungeonCrawler
-dependency3.to=Player
+dependency3.to=DungeonMap
 dependency3.type=UsesDependency
-dependency4.from=Player
-dependency4.to=DungeonMap
+dependency4.from=DungeonCrawler
+dependency4.to=Player
 dependency4.type=UsesDependency
 editor.fx.0.height=808
-editor.fx.0.width=959
+editor.fx.0.width=1121
 editor.fx.0.x=182
 editor.fx.0.y=53
 objectbench.height=93

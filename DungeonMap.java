@@ -68,10 +68,30 @@ public class DungeonMap{
                 System.out.printf("There is a passage to the %s%n",dirName);
                 break;
             case 2: //Sword
-                System.out.printf("%s of you, a glimmer in the dark.%n",dirName);
+                System.out.printf("%s of you, there's a glimmer in the dark.%n",dirName);
+                break;
+            case 3: //Torch
+                System.out.printf("%s of you, you spot a lick of a flame.%n", dirName);
+                break;
+            case 4: //Rope
+                System.out.printf("To the %s of you, a coil of something catches your attention.%n", dirName);
+                break;
+            case 5: //Key
+                System.out.printf("As you were walking by, you see a blink of something shiny to your %s.%n");
+                break;
+            case 6: //Door
+                System.out.printf("Ahead of you to the %s, an old door stands there.%n", dirName);
+                break;
+            case 7: //Monster
+                System.out.printf("Down the passageway to the %s, blood spots the stones down the way.%n", dirName);
+                break;
+            case 8: //Monster that no like fire
+                System.out.printf("A terrible smell comes from the dark tunnel %sward.%n", dirName); 
                 break;
             case 9: //Trap
                 System.out.printf("The ground to the %s looks unstable.%n",dirName);
+                break;
+            default:
                 break;
         }
     }

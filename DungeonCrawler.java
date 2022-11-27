@@ -21,6 +21,27 @@ public class DungeonCrawler{
                 System.out.println("...");
                 System.out.println("A sword! You pick it up.");
                 user.getSword();
+                break;
+            case 3: 
+                System.out.println("You walk towards the flame..");
+                System.out.println("...");
+                System.out.println("A torch is placed on the wall, you pick it up gratefully.");
+                user.getTorch();
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            default:
+                break;
         }
     }
     

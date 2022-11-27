@@ -35,11 +35,41 @@ public class Player
 
     public boolean hasTorch()
     {
-        return sword;
+        return torch;
     }
 
     public void getTorch()
     {
         this.torch = true; 
+    }
+    
+    public boolean hasRope()
+    {
+        return rope;
+    }
+
+    public void getRope()
+    {
+        this.rope = true; 
+    }
+    
+    public boolean hasKey()
+    {
+        return key;
+    }
+
+    public void getKey()
+    {
+        this.key = true; 
+    }
+    
+    public int xPos()
+    {
+        return x;
+    }
+    
+    public int yPos()
+    {
+        return y;
     }
 }
