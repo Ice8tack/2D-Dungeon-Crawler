@@ -16,31 +16,65 @@ public class DungeonCrawler{
     
     public static void checkRoom(DungeonMap map,Player user){
         switch (map.checkCurrent(user)){
-            case 2:
+            case 2: //sword
                 System.out.println("You investigate the glimmer..");
                 System.out.println("...");
                 System.out.println("A sword! You pick it up.");
                 user.getSword();
                 break;
-            case 3: 
+            case 3: //torch
                 System.out.println("You walk towards the flame..");
                 System.out.println("...");
                 System.out.println("A torch is placed on the wall, you pick it up gratefully.");
                 user.getTorch();
                 break;
-            case 4:
+            case 4: //Rope
+                System.out.println("You advance towards the coil carefully..");
+                System.out.println("...");
+                System.out.println("Lying on the ground is a long piece of rope. You grab it and move on.");
                 break;
-            case 5:
+            case 5: //Key
+                System.out.println("You walk towards the flame..");
+                System.out.println("...");
+                System.out.println("A torch is placed on the wall, you pick it up gratefully.");
                 break;
-            case 6:
+            case 6: //Door
+                if(key = false)
+                {
+                    System.out.println("The door ");
+                }
+                else
+                {
+                    System.out.println("You walk towards the flame..");
+                    System.out.println("...");
+                    System.out.println("A torch is placed on the wall, you pick it up gratefully.");
+                }
                 break;
-            case 7:
+            case 7: //Monster
                 break;
-            case 8:
+            case 8: //Monster that no like fire
+                if(torch = false)
+                {
+                    System.out.println("Creeping into the blinding darkness makes you uneasy. \n...");
+                    System.out.println("The sound of metal cuts through the air and you feel a sharp pain in your chest.");
+                    System.out.println("You fall to the ground and, not capable of doing anything but bleeding out slowly to your death.");
+                    // add a way to end the game, maybe we just do system.exit?
+                }
+                else
+                {
+                    
+                }
                 break;
-            case 9:
+            case 9: //Trap
+                if(rope = false)
+                {
+                    
+                }
+                else{
+                    
+                }
                 break;
-            default:
+            default: 
                 break;
         }
     }
