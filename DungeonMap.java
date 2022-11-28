@@ -1,5 +1,8 @@
 import java.io.File;
 import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
+
 public class DungeonMap{
     static int[][] map;
     static int width,height;
@@ -16,7 +19,7 @@ public class DungeonMap{
         Scanner mapInput;
         try{
             mapInput = new Scanner(mapFile);
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             System.out.println("Could not find file.");
             int[][] dead = new int[0][0];
             return dead;
