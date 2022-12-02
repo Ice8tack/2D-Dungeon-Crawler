@@ -3,27 +3,34 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.util.NoSuchElementException;
 import java.util.Arrays;
+import java.lang.ArrayIndexOutOfBoundsException;
 
 public class DungeonMap{
     static int[][] map;
     static int width,height;
+    static int startingX, startingY;
 
     // 0 = dead end, 1 = passageway, 2 = sword, 3 = torch, 4 = rope, 5 = key
     // 6 = door, 7 = monster, 8 = monster thats scared of fire 9 = pitfall trap
     // 10 = start point
 
-    public static int[][] readMap(){
+    public DungeonMap(String pathName){
+        startingX = startingY = -1;
+        readMap(pathName);
+    }
+    
+    public static int[][] readMap(String pathName){
         //File mapFile = new File("./maps/dungeon.txt");
         //File mapFile = new File("./maps/dungeon2.txt");
         //File mapFile = new File("./maps/dungeon3.txt");
-        File mapFile = new File("./maps/dungeon4.txt");
-        Scanner mapInput;
+        //File mapFile = new File("./maps/dungeon4.txt");
+        File mapFile = new File(pathName);
+        Scanner mapInput = null;
         try{
             mapInput = new Scanner(mapFile);
         } catch (FileNotFoundException e) {
             System.out.println("Could not find file.");
-            int[][] dead = new int[0][0];
-            return dead;
+            System.exit(-1);
         }
         String[] data = mapInput.nextLine().split(",");
         width = Integer.parseInt(data[0]);
@@ -33,26 +40,18 @@ public class DungeonMap{
             int[] currentRow = new int[width];
             data = mapInput.nextLine().split(",");
             for (int j = 0; j < width; j++){
-                currentRow[j] = Integer.parseInt(data[j]);
+                int mapTile = Integer.parseInt(data[j]);
+                currentRow[j] = mapTile;
+                if (mapTile == 10){
+                    startingX = j;
+                    startingY = i;
+                }
             }
             map[i] = currentRow;
         }
 
-        
         mapInput.close();
         return map;
-    }
-
-    public void index(int[] map)
-    {
-        int xpos = 10;
-        int index;
-        for(int i = 0; i < map.length; i++) {
-            if(map[i] == xpos) {
-                index = i;
-                break;
-            }
-        }
     }
 
     public static void printMap(){
@@ -62,26 +61,6 @@ public class DungeonMap{
             }
             System.out.println();
         }
-    }
-
-    public static void checkPos(int x, int y){
-        if (map[y][x-1] == 1){
-            System.out.println("There is a passage to the WEST");
-        }
-        if (map[y][x+1] == 1){
-            System.out.println("There is a passage to the EAST");
-        }
-        if (map[y-1][x] == 1){
-            System.out.println("There is a passage to the NORTH");
-        }
-        if (map[y+1][x] == 1){
-            System.out.println("There is a passage to the SOUTH");
-        }
-    }
-
-    public void printPos()
-    {
-        //System.out.print(map[y][x]);
     }
 
     public static void printDirection(int value, String dirName){
@@ -114,30 +93,69 @@ public class DungeonMap{
                 System.out.printf("The ground to the %s looks unstable.%n",dirName);
                 break;
             case 10: //start point
-                System.out.printf("The place from the % is where you started from%n", dirName);
+                System.out.printf("The place from the %s is where you started from%n", dirName);
                 break;
             default:
                 break;
         }
     }
 
+    public static void removeMapElement(Player user){
+        map[user.getY()][user.getX()] = 1;
+    }
+
     public static int checkNorth(Player user){
-        return (map[user.getY()-1][user.getX()]);
+        try {
+            return (map[user.getY()-1][user.getX()]);
+        } catch (ArrayIndexOutOfBoundsException e){
+            return 0;
+        }
     }
 
     public static int checkSouth(Player user){
-        return (map[user.getY()+1][user.getX()]);
+        try {
+            return (map[user.getY()+1][user.getX()]);
+        } catch (ArrayIndexOutOfBoundsException e){
+            return 0;
+        }
     }
 
     public static int checkEast(Player user){
-        return (map[user.getY()][user.getX()+1]);
+        try {
+            return (map[user.getY()][user.getX()+1]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return 0;
+        }
     }
 
     public static int checkWest(Player user){
-        return (map[user.getY()][user.getX()-1]);
+        try {
+            return (map[user.getY()][user.getX()-1]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return 0;
+        }
     }
 
     public static int checkCurrent(Player user){
-        return (map[user.getY()][user.getX()]);
+        try {
+            return (map[user.getY()][user.getX()]);
+        } catch (ArrayIndexOutOfBoundsException e){
+            return 0; // SHOULD NEVER HAPPEN
+        }
+    }
+
+    public static int getWidth(){
+        return width;
+    }
+
+    public static int getHeight(){
+        return height;
+    }
+
+    public static int getStartingX(){
+        return startingX;
+    }
+    public static int getStartingY(){
+        return startingY;
     }
 }

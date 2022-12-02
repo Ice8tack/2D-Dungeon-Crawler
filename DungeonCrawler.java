@@ -3,15 +3,20 @@ public class DungeonCrawler{
     //might need more items later
     //obstacles: monster to attack, door, pitfall, monster that is scared of fire
     //obstacles are set in the map
-    private int x, y; //global 
-
-    //make a method that keeps track of x and y, and possibly work on movement
     
     public static void main(String[] args){
-        DungeonMap map = new DungeonMap();
-        map.readMap();
-        map.printMap();
-        checkPosLoop(map);
+        System.out.println("Welcome to the dungeon! Please enter the name of the dungeon you would like to use (Included in the maps folder)");
+        Scanner input = new Scanner(System.in);
+        String mapFile = "./maps/" + input.nextLine() + ".txt";
+        input.close();
+        DungeonMap map = new DungeonMap(mapFile);
+        Player user = new Player(map);
+        if (user.getX() == -1 || user.getY() == -1){
+            System.out.println("Map has no starting position.");
+            System.exit(-1);
+        }
+        //map.printMap();
+        checkPosLoop(map, user);
     }
     
     public static void checkRoom(DungeonMap map,Player user){
@@ -21,22 +26,28 @@ public class DungeonCrawler{
                 System.out.println("...");
                 System.out.println("A sword! You pick it up.");
                 user.getSword();
+                map.removeMapElement(user);
                 break;
             case 3: //torch
                 System.out.println("You walk towards the flame..");
                 System.out.println("...");
                 System.out.println("A torch is placed on the wall, you pick it up gratefully.");
                 user.getTorch();
+                map.removeMapElement(user);
                 break;
             case 4: //Rope
                 System.out.println("You advance towards the coil carefully..");
                 System.out.println("...");
                 System.out.println("Lying on the ground is a long piece of rope. You grab it and move on.");
+                user.getRope();
+                map.removeMapElement(user);
                 break;
             case 5: //Key
                 System.out.println("You walk towards the flame..");
                 System.out.println("...");
                 System.out.println("A torch is placed on the wall, you pick it up gratefully.");
+                user.getKey();
+                map.removeMapElement(user);
                 break;
             case 6: //Door
                 if(user.hasKey() == false)
@@ -100,32 +111,16 @@ public class DungeonCrawler{
         }
     }
     
-    public static void checkPosLoop(DungeonMap map){
+    public static void checkPosLoop(DungeonMap map, Player user){
         Scanner input = new Scanner(System.in);
         while (true){
-            System.out.println("X?");
-            int x = input.nextInt();
-            System.out.println("Y?");
-            int y = input.nextInt();
-            if (x == 99 && y == 99){
-                break;
-            } else {
-                map.checkPos(x,y);
-            }
+            checkRoom(map,user);
+            user.checkPosition(map);
+            System.out.println("Direction?");
+            String direction = input.nextLine();
+            user.move(direction);
+            //TODO: Check for if dead, if door is exited, etc,
         }
-        input.close();
     } 
-    
-    public void DungeonObstacles(){
-        String monster; 
-        String scaredOfFireMon; 
-        
-        /*if(sword)
-        {
-            System.out.print("You picked up a sword");
-        }*/
-        
-    }
-    
     
 }
