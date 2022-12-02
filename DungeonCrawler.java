@@ -92,6 +92,9 @@ public class DungeonCrawler{
                     System.out.println("Thankfully the rope holds tight and you are suspended above a pit of spikes. You spot loose bricks near you and start to climb up the wall towards the other end of the pit. Not once stopping to looking below you");
                 }
                 break;
+            case 10: //Start point
+                System.out.println("You remember this place. This is where you started. Though where will you go next?");
+                break;
             default: 
                 break;
         }

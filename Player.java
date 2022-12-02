@@ -15,6 +15,12 @@ public class Player
         map.printDirection(west,"West");
     }
 
+    public void updateXnY(int[] arr)
+    {
+        x = DungeonMap.readMap().indexOf(10, 1);
+        //take start point, get x and y of start point, print x and y
+    }
+    
     public int getX(){
         return x;
     }

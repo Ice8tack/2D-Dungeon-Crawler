@@ -2,6 +2,7 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.util.NoSuchElementException;
+import java.util.Arrays;
 
 public class DungeonMap{
     static int[][] map;
@@ -9,7 +10,7 @@ public class DungeonMap{
 
     // 0 = dead end, 1 = passageway, 2 = sword, 3 = torch, 4 = rope, 5 = key
     // 6 = door, 7 = monster, 8 = monster thats scared of fire 9 = pitfall trap
-    // 10 = i forget what goes here
+    // 10 = start point
 
     public static int[][] readMap(){
         //File mapFile = new File("./maps/dungeon.txt");
@@ -37,13 +38,26 @@ public class DungeonMap{
             map[i] = currentRow;
         }
 
+        
         mapInput.close();
         return map;
     }
 
+    public void index(int[] map)
+    {
+        int xpos = 10;
+        int index;
+        for(int i = 0; i < map.length; i++) {
+            if(map[i] == xpos) {
+                index = i;
+                break;
+            }
+        }
+    }
+
     public static void printMap(){
         for (int i = 0; i < height; i++){
-            for (int j=0;j<width;j++){
+            for (int j = 0; j < width; j++){
                 System.out.printf("%d",map[i][j]);
             }
             System.out.println();
@@ -63,6 +77,11 @@ public class DungeonMap{
         if (map[y+1][x] == 1){
             System.out.println("There is a passage to the SOUTH");
         }
+    }
+
+    public void printPos()
+    {
+        //System.out.print(map[y][x]);
     }
 
     public static void printDirection(int value, String dirName){
@@ -94,6 +113,9 @@ public class DungeonMap{
             case 9: //Trap
                 System.out.printf("The ground to the %s looks unstable.%n",dirName);
                 break;
+            case 10: //start point
+                System.out.printf("The place from the % is where you started from%n", dirName);
+                break;
             default:
                 break;
         }
@@ -114,7 +136,7 @@ public class DungeonMap{
     public static int checkWest(Player user){
         return (map[user.getY()][user.getX()-1]);
     }
-    
+
     public static int checkCurrent(Player user){
         return (map[user.getY()][user.getX()]);
     }
