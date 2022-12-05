@@ -78,7 +78,7 @@ public class DungeonMap{
                 System.out.printf("To the %s of you, a coil of something catches your attention.%n", dirName);
                 break;
             case 5: //Key
-                System.out.printf("As you were walking by, you see a blink of something shiny to your %s.%n");
+                System.out.printf("As you were walking by, you see a blink of something shiny to your %s.%n", dirName);
                 break;
             case 6: //Door
                 System.out.printf("Ahead of you to the %s, an old door stands there.%n", dirName);

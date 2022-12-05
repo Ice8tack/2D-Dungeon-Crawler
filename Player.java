@@ -1,14 +1,15 @@
 public class Player
 {
-    private int x,y,north,south,east,west;
-    private boolean sword, torch, rope, key;
+    private int x,y,north,south,east,west,score;
+    private boolean sword, torch, rope, key, exit;
 
     public Player (DungeonMap map){
-        sword = torch = rope = key = false;
+        sword = torch = rope = key = exit = false;
+        score = 0;
         x = map.getStartingX();
         y = map.getStartingY();
     }
-    
+
     public void checkPosition(DungeonMap map){
         north = map.checkNorth(this);
         south = map.checkSouth(this);
@@ -26,24 +27,28 @@ public class Player
         input = input.toLowerCase();
         switch (input){
             case ("north"):
-                if (north > 0 && north != 6){
+                if (north > 0){
                     y--;
                 }
                 break;
             case ("south"):
-                if (south > 0 && south != 6){
+                if (south > 0){
                     y++;
                 }
                 break;
             case ("east"):
-                if (east > 0 && east != 6){
+                if (east > 0){
                     x++;
                 }
                 break;
             case ("west"):
-                if (west > 0 && west != 6){
+                if (west > 0){
                     x--;
                 }
+                break;
+            case ("exit"):
+                exit = true;
+                printGameOverMessage();
                 break;
             default:
                 System.out.println("What?");
@@ -52,6 +57,20 @@ public class Player
         //check if occupied
     }
 
+    public void newGamePlus(DungeonMap map){
+        sword = torch = rope = key = exit = false;
+        x = map.getStartingX();
+        y = map.getStartingY();
+    }
+    
+    public void printWinMessage(){
+        System.out.printf("Congratulations! You escaped the dungeon with %d points!%n",score);
+    }
+    
+    public void printGameOverMessage(){
+        System.out.printf("Game over! You failed to escape with %d points. Try again?",score);
+    }
+    
     public int getX(){
         return x;
     }
@@ -116,5 +135,17 @@ public class Player
 
     public void setY(int y){
         this.y = y;
+    }
+
+    public void setExit(boolean exit){
+        this.exit = exit;
+    }
+
+    public boolean getExit(){
+        return exit;
+    }
+    
+    public void increaseScore(int x){
+        score += x;
     }
 }
