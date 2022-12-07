@@ -1,8 +1,7 @@
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
-import java.util.NoSuchElementException;
-import java.util.Arrays;
+import java.lang.NumberFormatException;
 import java.lang.ArrayIndexOutOfBoundsException;
 
 public class DungeonMap{
@@ -18,7 +17,7 @@ public class DungeonMap{
         startingX = startingY = -1;
         readMap(pathName);
     }
-    
+
     public static int[][] readMap(String pathName){
         //File mapFile = new File("./maps/dungeon.txt");
         //File mapFile = new File("./maps/dungeon2.txt");
@@ -33,8 +32,13 @@ public class DungeonMap{
             System.exit(-1);
         }
         String[] data = mapInput.nextLine().split(",");
-        width = Integer.parseInt(data[0]);
-        height= Integer.parseInt(data[1]);
+        try {
+            width = Integer.parseInt(data[0]);
+            height= Integer.parseInt(data[1]);
+        } catch (NumberFormatException e){
+        System.out.println("Width/Height of map inaccessible.");
+            System.exit(-1);
+        }
         map = new int[height][width];
         for (int i = 0; i<height; i++){
             int[] currentRow = new int[width];
@@ -161,7 +165,7 @@ public class DungeonMap{
     public static int getStartingX(){
         return startingX;
     }
-    
+
     public static int getStartingY(){
         return startingY;
     }

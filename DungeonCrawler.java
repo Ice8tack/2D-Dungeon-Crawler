@@ -20,7 +20,7 @@ public class DungeonCrawler{
         while (user.hasKey()){
             System.out.println("You find yourself in another dungeon! Please enter the name of the dungeon you would like to use (Included in the maps folder)");
             input = new Scanner(System.in);
-            mapFile = "./maps/" + input.nextLine() + ".txt";
+            mapFile = String.format("./maps/%s.txt",input.nextLine());
             input.close();
             map = new DungeonMap(mapFile);
             user.newGamePlus(map);
@@ -84,7 +84,7 @@ public class DungeonCrawler{
             case 7: //Monster
                 if(user.hasSword() == false)
                 {
-                    System.out.println("Following the blood trails forward, you hear snarling. It grows ever louder as you creep down the way. Then, a creature jumps towards you. Bitng, gnashing, grabbing. The pain its inflicting, it hurits.");
+                    System.out.println("Following the blood trails forward, you hear snarling. It grows ever louder as you creep down the way. Then, a creature jumps towards you. Bitng, gnashing, grabbing. The pain its inflicting, it hurts.");
                     System.out.println("There's no way for you to properly fight back. No sword, spear, or weapon on your person. You're helpless to the monster's attacks");
                     System.out.println("You fall to the ground, a bloody, helpless mess. There was nothing you could do...");
                     user.setExit(true);
@@ -93,8 +93,8 @@ public class DungeonCrawler{
                 else
                 {
                     System.out.println("Following the blood trails forward, you hear snarling. It grows ever louder as you creep down the way");
-                    System.out.println("A creature jumps towards you. Using the new sword that you found, you bat it awy after it scratches you.");
-                    System.out.println("You make a clean, quick cut at the monster, ending its life swiftly");
+                    System.out.println("A creature jumps towards you. Using the sword that you found, you bat it away after it scratches you.");
+                    System.out.println("The monster's skull crumples, ending its life swiftly");
                     map.removeMapElement(user);
                     user.increaseScore(15);
                 }
@@ -122,7 +122,7 @@ public class DungeonCrawler{
                 {
                     System.out.println("Going to the unstable ground, you walk across it slowly. Testing each step carefully before going further");
                     System.out.println("As you are walking along, you faintly hear cracking, and notice the ground is falling at your feet."); 
-                    System.out.println("You try to sprint to where you think the end will be, but fall short, and land in a pit of spikes");
+                    System.out.println("You try to sprint to the end but fall short and land in a pit of spikes");
                     user.setExit(true);
                     user.printGameOverMessage();
                 }
@@ -147,8 +147,8 @@ public class DungeonCrawler{
                 if(user.hasGauntlet() == false)
                 {
                     System.out.println("An undead creature limps toward you, striking out with a sword. You match it with yours and go for a killing blow.");
-                    System.out.println("However this creature is faster than you, parrying your attack and striking you with its sword. Then it puts it's claws into your chest. It starts to feed off of your life");
-                    System.out.println("You're stunned, and slowly it feasts upon your energy, devouring it gratefully. You fall to the ground, lifeless. \nThen a few minutes later, your rise again, but not as yourself, but as a servant to the creature. Now unable of free will.");
+                    System.out.println("However this creature is faster than you, parrying your attack and striking you with its sword. Then it puts it's claws into your chest. It starts to feed off of your skin");
+                    System.out.println("You're stunned, and slowly it feasts upon you, devouring it gratefully. You fall to the ground, lifeless. \nThen a few minutes later, your rise again, but not as yourself, but as a servant to the creature. Now unable of free will.");
                     user.setExit(true);
                     user.printGameOverMessage();
                 }
