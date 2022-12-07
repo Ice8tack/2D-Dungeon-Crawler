@@ -95,6 +95,12 @@ public class DungeonMap{
             case 10: //start point
                 System.out.printf("The place from the %s is where you started from%n", dirName);
                 break;
+            case 11: //magic gauntlet
+                System.out.printf("From the %s you can see something resting on a pedestal%n", dirName);
+                break;
+            case 12: // wight
+                System.out.printf("You smell a foul stench coming from the %s%n", dirName);
+                break;
             default:
                 break;
         }
@@ -155,6 +161,7 @@ public class DungeonMap{
     public static int getStartingX(){
         return startingX;
     }
+    
     public static int getStartingY(){
         return startingY;
     }

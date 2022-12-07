@@ -1,0 +1,14 @@
+Reference Key to make a Dungeon:
+0 = wall 
+1 = passageway 
+2 = sword 
+3 = torch 
+4 = rope 
+5 = key
+6 = door
+7 = monster 
+8 = monster thats scared of fire 
+9 = pitfall trap
+10 = start point
+11 = magic gauntlet
+12 = wight

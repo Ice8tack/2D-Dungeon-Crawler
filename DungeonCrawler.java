@@ -60,9 +60,9 @@ public class DungeonCrawler{
                 user.increaseScore(5);
                 break;
             case 5: //Key
-                System.out.println("You walk towards the flame..");
+                System.out.println("Progressing towards the shine slowly you..");
                 System.out.println("...");
-                System.out.println("A torch is placed on the wall, you pick it up gratefully.");
+                System.out.println("find a key, laying down a the ground. Its attached to some string.");
                 user.getKey();
                 map.removeMapElement(user);
                 user.increaseScore(5);
@@ -134,7 +134,30 @@ public class DungeonCrawler{
                 }
                 break;
             case 10: //Start point
-                System.out.println("You remember this place. This is where you started. Though where will you go next?");
+                System.out.println("This is the beginning. You're not sure how you got here. Remembering nothing but a faint voice...\n\"Go forward, push through adversity\"");
+                break;
+            case 11: //guantlet
+                System.out.println("Moving towards the pedestal you spot a gauntlet resting on it. You go to grab it...");
+                System.out.println("Picking up the gauntlet you find that its light and lets out a strange hum. Unsure of its power you don the gauntlet and move ahead.");
+                user.getGauntlet();
+                map.removeMapElement(user);
+                user.increaseScore(5);
+                break;
+            case 12: //wight;
+                if(user.hasGauntlet() == false)
+                {
+                    System.out.println("An undead creature limps toward you, striking out with a sword. You match it with yours and go for a killing blow.");
+                    System.out.println("However this creature is faster than you, parrying your attack and striking you with its sword. Then it puts it's claws into your chest. It starts to feed off of your life");
+                    System.out.println("You're stunned, and slowly it feasts upon your energy, devouring it gratefully. You fall to the ground, lifeless. \nThen a few minutes later, your rise again, but not as yourself, but as a servant to the creature. Now unable of free will.");
+                    user.setExit(true);
+                    user.printGameOverMessage();
+                }
+                else
+                {
+                    System.out.println("You go towards the smell, aware of some presence ahead of you. An undead creatures strikes at you with a sword, but you're able to match it with yours.");
+                    System.out.println("As you battle this undead creature you start to get exhausted, the neverending blows of the creature being an unrelenting force.");
+                    System.out.println("You try to go for a killing blow to end this fight, but the wight parrys your attack and goes to sink its claws into you. \nAt that moment, your gauntlet glows brightly, filling the passageway with bright, holy light. The wight flinches and you're able to desperately slice the wights head off.");
+                }
                 break;
             default: 
                 break;

@@ -1,10 +1,10 @@
 public class Player
 {
     private int x,y,north,south,east,west,score;
-    private boolean sword, torch, rope, key, exit;
+    private boolean sword, torch, rope, key, exit, gauntlet;
 
     public Player (DungeonMap map){
-        sword = torch = rope = key = exit = false;
+        sword = torch = rope = key = exit = gauntlet = false;
         score = 0;
         x = map.getStartingX();
         y = map.getStartingY();
@@ -58,7 +58,7 @@ public class Player
     }
 
     public void newGamePlus(DungeonMap map){
-        sword = torch = rope = key = exit = false;
+        sword = torch = rope = key = exit = gauntlet = false;
         x = map.getStartingX();
         y = map.getStartingY();
     }
@@ -117,6 +117,16 @@ public class Player
     public void getKey()
     {
         this.key = true; 
+    }
+    
+    public boolean hasGauntlet()
+    {
+        return gauntlet;
+    }
+
+    public void getGauntlet()
+    {
+        this.gauntlet = true; 
     }
 
     public int xPos()
