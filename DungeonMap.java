@@ -36,7 +36,7 @@ public class DungeonMap{
             width = Integer.parseInt(data[0]);
             height= Integer.parseInt(data[1]);
         } catch (NumberFormatException e){
-        System.out.println("Width/Height of map inaccessible.");
+            System.out.println("Width/Height of map inaccessible.");
             System.exit(-1);
         }
         map = new int[height][width];
@@ -44,8 +44,19 @@ public class DungeonMap{
             int[] currentRow = new int[width];
             data = mapInput.nextLine().split(",");
             for (int j = 0; j < width; j++){
-                int mapTile = Integer.parseInt(data[j]);
-                currentRow[j] = mapTile;
+                int mapTile = 0;
+                try {
+                    mapTile = Integer.parseInt(data[j]);
+                    currentRow[j] = mapTile;
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println("Invalid map size.");
+                    mapInput.close();
+                    System.exit(-1);
+                } catch (NumberFormatException e){
+                    System.out.println("Map has invalid characters.");
+                    mapInput.close();
+                    System.exit(-1);
+                }
                 if (mapTile == 10){
                     startingX = j;
                     startingY = i;

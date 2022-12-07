@@ -1,3 +1,5 @@
+The first two numbers of the file need to be the dungeon's width and height respectively, separated by a comma.
+
 Reference Key to make a Dungeon:
 0 = wall 
 1 = passageway 
